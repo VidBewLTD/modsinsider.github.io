@@ -1,92 +1,85 @@
 /* Redux Theme - Magenta/Pink */
-body.redux-theme,
-body.redux-theme .md-header {
-  --md-primary-fg-color: #ff006e;
-  --md-primary-fg-color--light: #ff4d94;
-  --md-primary-fg-color--dark: #d10059;
-  --md-accent-fg-color: #ff006e;
+body.redux-theme .md-header,
+body.redux-theme [data-md-color-primary] {
+  background-color: #ff006e !important;
 }
 
-body.redux-theme .md-header {
-  background-color: #1a1a1a !important;
-  border-bottom: 3px solid #ff006e !important;
-}
-
+body.redux-theme .md-header__button,
 body.redux-theme .md-nav__link--active,
-body.redux-theme .md-tabs__link--active {
+body.redux-theme .md-tabs__link--active,
+body.redux-theme .md-sidebar__scrollwrap {
   color: #ff006e !important;
 }
 
-body.redux-theme .md-tabs__link--active {
-  border-bottom-color: #ff006e !important;
+body.redux-theme .md-tabs__link--active::after {
+  background-color: #ff006e !important;
 }
 
 body.redux-theme h1,
-body.redux-theme h2 {
+body.redux-theme h2,
+body.redux-theme h3 {
   color: #ff006e !important;
 }
 
 /* Standard Smash Remix Theme - Yellow/Orange/Red */
-body.mods-theme,
-body.mods-theme .md-header {
-  --md-primary-fg-color: #ffa500;
-  --md-primary-fg-color--light: #ffb84d;
-  --md-primary-fg-color--dark: #ff8c00;
-  --md-accent-fg-color: #ff6b35;
+body.mods-theme .md-header,
+body.mods-theme [data-md-color-primary] {
+  background-color: #ffa500 !important;
 }
 
-body.mods-theme .md-header {
-  background-color: #1a1a1a !important;
-  border-bottom: 3px solid #ffa500 !important;
-}
-
+body.mods-theme .md-header__button,
 body.mods-theme .md-nav__link--active,
-body.mods-theme .md-tabs__link--active {
+body.mods-theme .md-tabs__link--active,
+body.mods-theme .md-sidebar__scrollwrap {
   color: #ffa500 !important;
 }
 
-body.mods-theme .md-tabs__link--active {
-  border-bottom-color: #ffa500 !important;
+body.mods-theme .md-tabs__link--active::after {
+  background-color: #ffa500 !important;
 }
 
 body.mods-theme h1,
-body.mods-theme h2 {
+body.mods-theme h2,
+body.mods-theme h3 {
   color: #ffa500 !important;
 }
 
 /* Project Galleon Theme - Blue/Cyan */
-body.galleon-theme,
-body.galleon-theme .md-header {
-  --md-primary-fg-color: #00d4ff;
-  --md-primary-fg-color--light: #4de6ff;
-  --md-primary-fg-color--dark: #00a8cc;
-  --md-accent-fg-color: #0099ff;
+body.galleon-theme .md-header,
+body.galleon-theme [data-md-color-primary] {
+  background-color: #00d4ff !important;
 }
 
-body.galleon-theme .md-header {
-  background-color: #1a1a1a !important;
-  border-bottom: 3px solid #00d4ff !important;
-}
-
+body.galleon-theme .md-header__button,
 body.galleon-theme .md-nav__link--active,
-body.galleon-theme .md-tabs__link--active {
+body.galleon-theme .md-tabs__link--active,
+body.galleon-theme .md-sidebar__scrollwrap {
   color: #00d4ff !important;
 }
 
-body.galleon-theme .md-tabs__link--active {
-  border-bottom-color: #00d4ff !important;
+body.galleon-theme .md-tabs__link--active::after {
+  background-color: #00d4ff !important;
 }
 
 body.galleon-theme h1,
-body.galleon-theme h2 {
+body.galleon-theme h2,
+body.galleon-theme h3 {
   color: #00d4ff !important;
 }
 
-/* Home Theme - Default Orange */
-body.home-theme,
+/* Home Theme - Orange */
 body.home-theme .md-header {
-  --md-primary-fg-color: #ff6b35;
-  --md-primary-fg-color--light: #ff8c63;
-  --md-primary-fg-color--dark: #e64410;
-  --md-accent-fg-color: #ffa500;
+  background-color: #ff6b35 !important;
+}
+
+body.home-theme .md-header__button,
+body.home-theme .md-nav__link--active,
+body.home-theme .md-tabs__link--active {
+  color: #ff6b35 !important;
+}
+
+body.home-theme h1,
+body.home-theme h2,
+body.home-theme h3 {
+  color: #ff6b35 !important;
 }
