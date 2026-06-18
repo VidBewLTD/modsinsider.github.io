@@ -19,6 +19,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Patcher: patcher/index.md
   - Redux: redux/index.md
   - Mods:
       - All Mods: mods/index.md

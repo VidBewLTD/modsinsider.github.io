@@ -1,3 +1,5 @@
+![Smash Remix Redux Logo](https://cdn.builder.io/api/v1/image/assets%2Fe07f5ab4aea3445288962012181a9d73%2F1ffc7ba5d0014df4813061ebfa3f1bf1?format=webp&width=800&height=1200){: style="max-width: 400px; margin: 0 auto; display: block;" }
+
 # Smash Remix Redux
 
 The premier Smash Remix modification, crafted with passion by the community.

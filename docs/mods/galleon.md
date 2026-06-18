@@ -1,3 +1,5 @@
+![Project Galleon Logo](https://cdn.builder.io/api/v1/image/assets%2Fe07f5ab4aea3445288962012181a9d73%2Ff4c81bfca002427b8c39172864f1b34a?format=webp&width=800&height=1200){: style="max-width: 400px; margin: 0 auto; display: block;" }
+
 # Project Galleon
 
 ## About

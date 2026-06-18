@@ -1,3 +1,5 @@
+![Smash Remix Logo](https://cdn.builder.io/api/v1/image/assets%2Fe07f5ab4aea3445288962012181a9d73%2F5c3391acf11f4bb684bdaa9906a4360f?format=webp&width=800&height=1200){: style="max-width: 400px; margin: 0 auto; display: block;" }
+
 # Shino Mod
 
 ## About
