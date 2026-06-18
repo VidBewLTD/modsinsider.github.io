@@ -43,49 +43,50 @@ Easily patch your ROMs with your favorite mods directly in your browser!
 
 </div>
 
+<script src="https://unpkg.com/xdelta3-wasm@0.4.1/dist/xdelta3.js"></script>
 <script>
 const modData = {
   redux: {
     name: 'Smash Remix Redux',
     versions: [
-      { name: 'Latest', download: '#' }
+      { name: 'Latest', patch: 'redux-latest.xdelta' }
     ]
   },
   slippy: {
     name: 'Slippy Mod',
     versions: [
-      { name: 'v1.0', download: '#' }
+      { name: 'v1.0', patch: 'slippy-v1.0.xdelta' }
     ]
   },
   projectx: {
     name: 'Project X',
     versions: [
-      { name: '2023', download: '#' },
-      { name: '2022', download: '#' }
+      { name: '2023', patch: 'projectx-2023.xdelta' },
+      { name: '2022', patch: 'projectx-2022.xdelta' }
     ]
   },
   spiderman: {
     name: 'Spiderman Mod',
     versions: [
-      { name: 'Latest', download: '#' }
+      { name: 'Latest', patch: 'spiderman-latest.xdelta' }
     ]
   },
   shino: {
     name: 'Shino Mod',
     versions: [
-      { name: 'Latest', download: '#' }
+      { name: 'Latest', patch: 'shino-latest.xdelta' }
     ]
   },
   knuckles: {
     name: 'Smash Remix and Knuckles',
     versions: [
-      { name: 'Latest', download: '#' }
+      { name: 'Latest', patch: 'knuckles-latest.xdelta' }
     ]
   },
   galleon: {
     name: 'Project Galleon',
     versions: [
-      { name: 'Latest', download: '#' }
+      { name: 'Latest', patch: 'galleon-latest.xdelta' }
     ]
   }
 };
@@ -100,12 +101,12 @@ const statusText = document.getElementById('status-text');
 modSelect.addEventListener('change', () => {
   const selectedMod = modSelect.value;
   versionSelect.innerHTML = '<option value="">Select version</option>';
-  
+
   if (selectedMod && modData[selectedMod]) {
     const versions = modData[selectedMod].versions;
     versions.forEach(v => {
       const option = document.createElement('option');
-      option.value = v.download;
+      option.value = v.patch;
       option.textContent = v.name;
       versionSelect.appendChild(option);
     });
@@ -117,36 +118,70 @@ modSelect.addEventListener('change', () => {
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   if (!modSelect.value) {
     showStatus('Please select a mod', 'error');
     return;
   }
-  
+
   if (!versionSelect.value) {
     showStatus('Please select a version', 'error');
     return;
   }
-  
+
   if (!romInput.files.length) {
     showStatus('Please select a ROM file', 'error');
     return;
   }
-  
-  showStatus('Patching in progress... This may take a few minutes.', 'info');
-  
+
+  const rom = romInput.files[0];
+  const patchFile = versionSelect.value;
+  const modName = modSelect.options[modSelect.selectedIndex].text;
+
+  showStatus('Downloading patch file...', 'info');
+
   try {
-    // Placeholder - actual patching would require xdelta3.js library
-    showStatus('✓ Patch would be applied here! Please download the patch file from the mod page for now.', 'success');
+    // Fetch the patch file
+    const patchResponse = await fetch(`/patches/${patchFile}`);
+    if (!patchResponse.ok) {
+      showStatus('Patch file not found. Please check the mod page for manual patching.', 'error');
+      return;
+    }
+    const patchBuffer = await patchResponse.arrayBuffer();
+
+    // Read ROM file
+    const romBuffer = await rom.arrayBuffer();
+
+    showStatus('Patching ROM... This may take a minute or two.', 'info');
+
+    // Initialize xdelta3
+    const xdelta = await Xdelta3();
+
+    // Apply patch
+    const patchedRom = xdelta.decode(romBuffer, patchBuffer);
+
+    // Download patched ROM
+    const blob = new Blob([patchedRom], { type: 'application/octet-stream' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${modName.replace(/\s+/g, '_')}_patched.iso`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    showStatus('✓ ROM patched successfully! Download started. Ready to play!', 'success');
   } catch (err) {
-    showStatus('Error: ' + err.message, 'error');
+    console.error(err);
+    showStatus('Error: ' + err.message + '. Patch files may not be available yet. Check the mod pages.', 'error');
   }
 });
 
 function showStatus(message, type) {
   statusText.textContent = message;
   statusDiv.style.display = 'block';
-  
+
   if (type === 'error') {
     statusDiv.style.background = '#6b2a2a';
     statusDiv.style.color = '#ff6b6b';
