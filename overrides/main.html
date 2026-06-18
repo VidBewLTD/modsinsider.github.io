@@ -1,7 +1,26 @@
 {% extends "base.html" %}
 
-{% block content %}
-<div class="md-content" data-section="{% if 'redux' in page.file.src_path %}redux{% elif 'galleon' in page.file.src_path %}galleon{% elif 'mods' in page.file.src_path %}mods{% else %}home{% endif %}">
+{% block extrahead %}
   {{ super() }}
-</div>
+  <script>
+    // Determine theme based on current page
+    function applyTheme() {
+      const pathname = window.location.pathname;
+      let theme = 'home-theme';
+
+      if (pathname.includes('/redux/')) {
+        theme = 'redux-theme';
+      } else if (pathname.includes('/galleon')) {
+        theme = 'galleon-theme';
+      } else if (pathname.includes('/mods/')) {
+        theme = 'mods-theme';
+      }
+
+      document.body.className = theme;
+    }
+
+    // Apply theme on page load
+    document.addEventListener('DOMContentLoaded', applyTheme);
+    applyTheme();
+  </script>
 {% endblock %}
