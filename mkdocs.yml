@@ -1,0 +1,43 @@
+site_name: Mods Insider
+site_description: Home of Smash Remix mods and Smash Remix Redux
+theme:
+  name: material
+  palette:
+    - scheme: dark
+      primary: deep orange
+      accent: orange
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+  icon:
+    logo: fontawesome/solid/gamepad
+  custom_dir: overrides
+
+nav:
+  - Home: index.md
+  - Redux: redux/index.md
+  - Mods:
+      - All Mods: mods/index.md
+      - Slippy: mods/slippy.md
+      - Project X: mods/project-x.md
+      - Spiderman: mods/spiderman.md
+      - Shino: mods/shino.md
+      - Knuckles: mods/knuckles.md
+      - Project Galleon: mods/galleon.md
+  - Documentation: docs/index.md
+  - Gallery: gallery/index.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.emoji
+  - pymdownx.tabbed
+  - attr_list
+
+extra_css:
+  - assets/stylesheets/mod-themes.css
