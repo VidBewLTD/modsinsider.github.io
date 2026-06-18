@@ -15,6 +15,7 @@ theme:
     - content.tabs.link
   icon:
     logo: fontawesome/solid/gamepad
+  custom_dir: overrides
 
 nav:
   - Home: index.md
@@ -37,3 +38,6 @@ markdown_extensions:
   - pymdownx.emoji
   - pymdownx.tabbed
   - attr_list
+
+extra_css:
+  - assets/stylesheets/mod-themes.css
